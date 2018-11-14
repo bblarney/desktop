@@ -8,7 +8,7 @@ plugins:
   - json
 
 extends:
-  - prettier
+  - plugin:prettier/recommended
   - prettier/react
 
 rules:
