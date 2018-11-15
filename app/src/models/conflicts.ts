@@ -1,3 +1,5 @@
+export type Choice = 'theirs' | 'ours'
+
 /**
  * The repository conflict state, for use when generating the status. By default
  * this will only be populated when Git reports that there are files with
