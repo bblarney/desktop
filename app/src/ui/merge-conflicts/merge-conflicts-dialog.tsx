@@ -38,6 +38,11 @@ function getUnmergedFiles(status: WorkingDirectoryStatus) {
   )
 }
 
+function unmergedFilesHeaderMessage(count: number) {
+  // localization, it burns :vampire:
+  return count === 1 ? `1 conflicted file` : `${count} conflicted files`
+}
+
 const submitButtonString = 'Commit merge'
 const cancelButtonString = 'Abort merge'
 
@@ -172,12 +177,11 @@ export class MergeConflictsDialog extends React.Component<
   }
 
   private renderUnmergedFilesSummary(conflictedFilesCount: number) {
-    // localization, it burns :vampire:
-    const message =
-      conflictedFilesCount === 1
-        ? `1 conflicted file`
-        : `${conflictedFilesCount} conflicted files`
-    return <h3 className="summary">{message}</h3>
+    return (
+      <h3 className="summary">
+        {unmergedFilesHeaderMessage(conflictedFilesCount)}
+      </h3>
+    )
   }
 
   private renderAllResolved() {
