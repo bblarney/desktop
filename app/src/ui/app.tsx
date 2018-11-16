@@ -1354,6 +1354,7 @@ export class App extends React.Component<IAppProps, IAppState> {
               dispatcher={this.props.dispatcher}
               repository={popup.repository}
               workingDirectory={workingDirectory}
+              resolutions={conflictState.resolutions}
               onDismissed={this.onPopupDismissed}
               openFileInExternalEditor={this.openFileInExternalEditor}
               resolvedExternalEditor={this.state.resolvedExternalEditor}
