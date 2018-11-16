@@ -23,7 +23,7 @@ interface IMergeConflictsDialogProps {
   readonly dispatcher: Dispatcher
   readonly repository: Repository
   readonly workingDirectory: WorkingDirectoryStatus
-  readonly resolutions: Map<string, Choice>
+  readonly resolutions: ReadonlyMap<string, Choice>
   readonly onDismissed: () => void
   readonly openFileInExternalEditor: (path: string) => void
   readonly resolvedExternalEditor: string | null
@@ -70,6 +70,7 @@ export class MergeConflictsDialog extends React.Component<
     await this.props.dispatcher.createMergeCommit(
       this.props.repository,
       this.props.workingDirectory.files,
+      this.props.resolutions,
       {
         ourBranch: this.props.ourBranch,
         theirBranch: this.props.theirBranch,
