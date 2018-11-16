@@ -99,6 +99,10 @@ export enum UnmergedEntrySummary {
   BothModified = 'both-modified',
 }
 
+/**
+ * Valid Git index states that the application should detect text conflict
+ * markers
+ */
 type TextConflictDetails =
   | {
       readonly action: UnmergedEntrySummary.BothAdded
@@ -115,6 +119,10 @@ type TextConflictEntry = {
   readonly kind: 'conflicted'
 } & TextConflictDetails
 
+/**
+ * Valid Git index states where the user needs to choose one of `us` or `them`
+ * in the app.
+ */
 type ManualConflictDetails =
   | {
       readonly action: UnmergedEntrySummary.AddedByUs
