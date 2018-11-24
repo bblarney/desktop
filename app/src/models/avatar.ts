@@ -78,7 +78,6 @@ export function getAvatarUsersForCommit(
   avatarUsers.push(
     getAvatarUserFromAuthor(gitHubRepository, gitHubUsers, commit.author)
   )
-
   avatarUsers.push(
     ...commit.coAuthors.map(x =>
       getAvatarUserFromAuthor(gitHubRepository, gitHubUsers, x)
