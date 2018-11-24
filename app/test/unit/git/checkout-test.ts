@@ -40,6 +40,7 @@ describe('git/checkout', () => {
           tzOffset: 0,
         },
         authoredByCommitter: true,
+        coAuthoredByCommitter: false,
         parentSHAs: [],
         trailers: [],
         coAuthors: [],

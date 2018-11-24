@@ -74,10 +74,11 @@ export function getAvatarUsersForCommit(
   commit: Commit
 ) {
   const avatarUsers = []
-
+  
   avatarUsers.push(
     getAvatarUserFromAuthor(gitHubRepository, gitHubUsers, commit.author)
   )
+
   avatarUsers.push(
     ...commit.coAuthors.map(x =>
       getAvatarUserFromAuthor(gitHubRepository, gitHubUsers, x)
@@ -87,7 +88,7 @@ export function getAvatarUsersForCommit(
   const webFlowCommitter =
     gitHubRepository !== null && isWebFlowCommitter(commit, gitHubRepository)
 
-  if (!commit.authoredByCommitter && !webFlowCommitter) {
+  if (!commit.authoredByCommitter && !webFlowCommitter && !commit.coAuthoredByCommitter) {
     avatarUsers.push(
       getAvatarUserFromAuthor(gitHubRepository, gitHubUsers, commit.committer)
     )

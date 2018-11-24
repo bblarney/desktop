@@ -52,6 +52,12 @@ export class Commit {
   public readonly authoredByCommitter: boolean
 
   /**
+   * A value indicating whether the any co-author and the committer
+   * are the same person.
+   */
+  public readonly coAuthoredByCommitter: boolean
+
+  /**
    * @param sha The commit's SHA.
    * @param summary The first line of the commit message.
    * @param body The commit message without the first line and CR.
@@ -77,5 +83,12 @@ export class Commit {
     this.authoredByCommitter =
       this.author.name === this.committer.name &&
       this.author.email === this.committer.email
+
+    this.coAuthoredByCommitter = false;
+    for (const coAuthor of this.coAuthors){
+      if (coAuthor.name === this.committer.name && coAuthor.email === this.committer.email){
+        this.coAuthoredByCommitter = true;
+      }
+    }
   }
 }
